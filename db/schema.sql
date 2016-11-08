@@ -11,6 +11,4 @@ PRIMARY KEY (id)
 );
 
 
-INSERT INTO wishes (wish) VALUES ('Test1.');
-INSERT INTO wishes (wish) VALUES ('Test2.');
-INSERT INTO wishes (wish) VALUES ('Test3.');
+

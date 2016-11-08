@@ -22,21 +22,6 @@ app.set('view engine', 'handlebars');
 var routes = require('./controllers/burgers_controller.js');
 app.use('/', routes);
 
-// app.get('/', function(req,res){
-//   connection.query('SELECT * FROM burgers;', function(err, data){
-//     if(err) throw err;
-
-//     res.render('index', {burgers: data});
-//   });
-// });
-
-// app.post('/create', function(req,res){
-//   connection.query('INSERT INTO burgers (burger_name) VALUES (?)', [req.body.section], function(err, result){
-//     if(err) throw err;
-//     res.redirect('/');
-//   });
-// });
-
 var port = 8080;
 app.listen(port);
 
