@@ -2,14 +2,14 @@ var connection = require('../config/connection.js');
 
 var orm = {
   selectAll: function(callback){
-    connection.query('SELECT * FROM burgers;', function(err, res){
+    connection.query('SELECT * FROM burgers', function(err, res){
       if(err) throw err;
       callback(res);
     });
   },
 
   insertOne: function(insertOne, callback){
-    connection.query('INSERT INTO burgers SET ?', [burger_name : insertOne], function(err, res){
+    connection.query('INSERT INTO burgers SET ?', {burger_name : insertOne}, function(err, res){
       if(err) throw err;
       callback();
 
