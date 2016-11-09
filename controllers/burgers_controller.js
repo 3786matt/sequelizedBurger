@@ -16,7 +16,11 @@ router.get('/burgers', function(req, res){
 });
 
 router.post('/burgers/create', function(req, res){
-  burger1.insertOne(req.body.burger_name, function(){
+  console.log('is it what i think is:', req.body); // {burger_name: "ChiliCheese#"}
+  req.body.devoured = 0; // {burger_name: "ChilliCheese#", devoured:0}
+  // this is a dirty fix, the mysql column should have a default of 0
+  burger1.insertOne(req.body, function(otherRes){
+    console.log('mysql returned', otherRes);
     res.redirect('/burgers');
     //might need to use /index
   });

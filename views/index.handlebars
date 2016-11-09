@@ -1,8 +1,11 @@
-
-<h1>Burgers!</h1>
+<div class="jumbotron">
+  <h1 id="burg">EAT-DA-BURGER!</h1>
+</div>
 <div class="row">
-<div class="col-xs-6">
-<ul>
+{{!-- <div class="centerBlock"> --}}
+<div id="notDevoured" class="col-xs-6">
+<h2>So many burgers, so little time...</h2>
+<ul id="list">
   {{#each burgers}}
     {{#unless this.devoured}}
       <li>
@@ -10,17 +13,18 @@
 
         <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
           <input type="hidden" name="devour" value="true">
-          <button type="submit">EAT ME!!</button>
-        </form>
+          <button class='eatButton' type="submit">EAT ME!!</button>
+        </form><br>
 
       </li>
     {{/unless}}
   {{/each}}
 </ul>
 </div>
+{{!-- </div> --}}
 
 <div class="col-xs-6">
-<h2>These burgers have already been consumed.</h2>
+<h2>You've eaten the following:</h2>
 
 <ul>
   {{#each burgers}}
@@ -36,16 +40,19 @@
 
 
 <div class="row">
-<div class="col-xs-10">
-<h2>Make a New Burger!</h2>
+<div id="new" class="col-xs-12">
+<h2>Full yet? No? Make a New Burger!</h2><br>
 <form class="create-update-form" action="burgers/create" method="POST">
 
   <div class="form-group">
     <label for="newBurg">Burger Name:</label>
-    <input type="text" id="newBurger" name="nameNewBurger">
+    <input type="text" id="newBurger" name="burger_name">
   </div>
 
-  <button type="submit">Add a Burger!</button>
+  <button class='eatButton' type="submit">Add a Burger!</button>
 </form>
 </div>
+</div>
+<div class="jumbotronB">
+  {{!-- <h1 id="burg">Burgers!</h1> --}}
 </div>

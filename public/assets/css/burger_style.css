@@ -1,0 +1,65 @@
+body {
+  background-color: #EE2F2F;
+}
+
+@font-face {
+  font-family: 'ketchup';
+  src: url('delicious_ketchup/delicious ketchup.ttf'); 
+}
+
+.jumbotron {
+  text-align: center;
+  background-image: url("../img/jumbotron_burg.jpeg");
+  font-size: 90px;
+  color: red;
+  font-family: 'ketchup';
+}
+
+#burg {
+  font-size: 110px;
+  text-shadow: 3px 3px 5px black;
+  color: red;
+  font-weight: bold;
+}
+
+.col-xs-6 {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 20px;
+  color: #FFDB58;
+}
+
+#list {
+  list-style: none;
+}
+
+#new {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 30px;
+  color: #FFDB58;
+}
+
+.jumbotronB {
+  height: 200px;
+  text-align: center;
+  background-image: url("../img/jumbotron_burg.jpeg");
+  font-size: 90px;
+  margin-top: 25px;
+}
+
+.eatButton {
+  color: red;
+  background-color: #FFDB58;
+  border: 2px solid black;
+  border-radius: 25px;
+}
+
+#newBurger {
+  color: red;
+  background-color: #FFDB58;
+}
+
+
