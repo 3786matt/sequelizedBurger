@@ -9,6 +9,7 @@ var orm = {
   },
 
   insert: function(vals, callback){
+    // vals will should look like {newBurgerName: 'ChiliChese', devoured: 0}
     connection.query('INSERT INTO burgers SET ?', vals, function(err, res){
       // vals will should look like {newBurgerName: 'ChiliChese', devoured: 0}
       // without devoured it passed {burger_name: 'ChiliCheese2'}

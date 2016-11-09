@@ -26,10 +26,12 @@ router.post('/burgers/create', function(req, res){
   });
 });
 
-router.put('/burger/update:id', function(req, res){
+router.put('/burgers/update/:id', function(req, res){
+  //console.log('put route hit')
   var condition = req.params.id;
   console.log('Condition: ', condition);
-  burger1.updateOne(req.params.id, function(){
+  burger1.updateOne(req.params.id, function(mysqlRes){
+    console.log('mysql returned', mysqlRes)
     res.redirect('/burgers');
   });
 });
