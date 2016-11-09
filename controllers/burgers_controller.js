@@ -22,7 +22,7 @@ router.post('/burgers/create', function(req, res){
   });
 });
 
-router.put('/cats/update:id', function(req, res){
+router.put('/burger/update:id', function(req, res){
   var condition = req.params.id;
   console.log('Condition: ', condition);
   burger1.updateOne(req.params.id, function(){
