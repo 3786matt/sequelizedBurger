@@ -34,6 +34,10 @@ body {
   list-style: none;
 }
 
+#list1 {
+  list-style: none;
+}
+
 #new {
   margin-left: auto;
   margin-right: auto;
