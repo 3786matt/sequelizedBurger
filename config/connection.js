@@ -1,20 +1,35 @@
-var mysql = require("mysql");
+var Sequelize = require("sequelize");
 
-// First you need to create a connection to the db
-var connection = mysql.createConnection({
-  // port: 3306,
-  host: "localhost",
-  user: "root",
-  password: "",
-  database : "burgers_db"
-});
 
-connection.connect(function(err){
-  if(err){
-    console.log('Error connecting to Db');
-    return;
+var connection = {
+
+  localhost: {
+    host: "localhost",
+    user: "root",
+    password: "",
+    database : "burgers_db"
   }
-  console.log('Connection established');
+  //NEED A COMMA AFTER LOCALHOST OBJECT IF USING JAWSDB
+
+  // jawsDB: {
+
+  // }
+}
+
+//WILL NEED TO CHANGE CHOOSECONNECTIONSOURCE BELOW TO CONNECTION.JAWSDB
+
+var chooseConnectionSource = connection.localhost;
+
+var sequelize = new Sequelize(chooseConnectionSource.database, chooseConnectionSource.user, chooseConnectionSource.password, {
+  host: chooseConnectionSource.host
+  dialect: 'mysql',
+
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+
 });
 
-module.exports = connection;
+module.exports = sequelize;
