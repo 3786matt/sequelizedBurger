@@ -5,7 +5,7 @@ var Sequelize = require("sequelize");
 var dbConnection = require("../config/connection.js");
 
 
-var seqBurg = dbConnection.define("seqBurgTab", {
+var seqBurg = dbConnection.define("seqBurgTabs", {
   id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,

@@ -1,29 +1,27 @@
 var express = require('express');
 var router = express.Router();
 var sequelBurger1 = require('../models/burger.js');
+var Sequelize = require('sequelize');
 
-var connection1 = models.sequelize;
-sequelizeConnect.sync();
 
 router.get('/', function (req, res){
   res.redirect('/burgers');
 });
 
 router.get('/burgers', function(req, res){
-sequelBurger1.burgers.findAll({
-  include: [{model: sequelBurger1.burger}]
-}).then(function(data){
+  sequelBurger1.findAll().then(function(data){
+    // Burger.findAll({devoured:0});
   var object = {burgers: data};
-  res.render('/index', object);
-})
+  res.render('index', object);
+  });
 });
 
 router.post('/burgers/create', function(req, res){
-  sequelBurger1.burgers.create({
+  sequelBurger1.create({
     burger_name: req.body.burger_name,
     devoured:false
   }).then(function(){
-    res.redirect('/index');
+    res.redirect('/');
   });
 });
 
