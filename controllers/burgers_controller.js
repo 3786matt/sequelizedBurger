@@ -1,36 +1,38 @@
 var express = require('express');
 var router = express.Router();
-var burger1 = require('../models/burger.js');
+var sequelBurger1 = require('../models/burger.js');
 
+var connection1 = models.sequelize;
+sequelizeConnect.sync();
 
 router.get('/', function (req, res){
   res.redirect('/burgers');
 });
 
 router.get('/burgers', function(req, res){
-  burger1.selectAll(function(data) {
-    var burgerObj = {burgers: data};
-    console.log(burgerObj);
-    res.render('index', burgerObj);
-  });
+sequelBurger1.burgers.findAll({
+  include: [{model: sequelBurger1.burger}]
+}).then(function(data){
+  var object = {burgers: data};
+  res.render('/index', object);
+})
 });
 
 router.post('/burgers/create', function(req, res){
-  console.log('is it what i think is:', req.body); // {burger_name: "ChiliCheese#"}
-  req.body.devoured = 0; // {burger_name: "ChilliCheese#", devoured:0}
-  // this is a dirty fix, the mysql column should have a default of 0
-  burger1.insertOne(req.body, function(otherRes){
-    console.log('mysql returned', otherRes);
-    res.redirect('/burgers');
-    //might need to use /index
+  sequelBurger1.burgers.create({
+    burger_name: req.body.burger_name,
+    devoured:false
+  }).then(function(){
+    res.redirect('/index');
   });
 });
 
+//not sure how to devour burger with put below.
+
 router.put('/burgers/update/:id', function(req, res){
-  //console.log('put route hit')
   var condition = req.params.id;
   console.log('Condition: ', condition);
-  burger1.updateOne(req.params.id, function(mysqlRes){
+  sequelBurger1.updateOne(req.params.id, function(mysqlRes){
     console.log('mysql returned', mysqlRes)
     res.redirect('/burgers');
   });

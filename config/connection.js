@@ -21,8 +21,8 @@ var connection = {
 var chooseConnectionSource = connection.localhost;
 
 var sequelize = new Sequelize(chooseConnectionSource.database, chooseConnectionSource.user, chooseConnectionSource.password, {
-  host: chooseConnectionSource.host
-  dialect: 'mysql',
+  host: chooseConnectionSource.host,
+  // dialect: 'mysql',
 
   pool: {
     max: 5,
